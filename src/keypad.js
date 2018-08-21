@@ -67,8 +67,7 @@ class Keypad {
         this.transformPhoneNumber(this.numbers, e.target.textContent);
       }
     });
-
-    // ----- Add ability to use keyboard to type and delete numbers--//
+    
     document.body.addEventListener('keydown', (e) => {
       if (Number(e.key) >= 0 || e.key == '*' || e.key == '#') {
         this.transformPhoneNumber(this.numbers, e.key);
