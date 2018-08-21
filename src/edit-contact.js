@@ -72,7 +72,7 @@ class EditContact {
 		main += this.createAdditionalData();
 		main +=
 			`<div class="edit-field">
-						<button href="#" class="delete-contact">delete contact</button>
+						<button id="delete" href="#" class="delete-contact">delete contact</button>
 					</div>
 				</div>
 			</div>
@@ -86,6 +86,22 @@ class EditContact {
 		this.cancel = document.getElementById('cancel');
 		this.done = document.getElementById('done');
 		this.main = document.getElementById('main');
+
+		this.delete = document.getElementById('delete');
+
+		this.delete.addEventListener('click', e => {
+			e.preventDefault();
+			const url = 'https://easycode-js.herokuapp.com/nastya/users';
+			
+			fetch(`${url}/${this.user._id}`, {
+				method: "DELETE",
+				body: JSON.stringify(this.newUser),
+				headers: { "Content-Type": "application/json" },
+			})
+				.then(data => {
+					myTelephoneBook.request();
+				})
+		})
 
 		this.main.addEventListener('click', e => {
 			e.preventDefault();
@@ -129,7 +145,7 @@ class EditContact {
 				})
 		});
 	}
-	
+
 	render() {
 		this.app = document.getElementById('app');
     if (this.app) {
