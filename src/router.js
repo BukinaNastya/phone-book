@@ -25,5 +25,5 @@ links.forEach(link => {
 
 })
 window.addEventListener('popstate', function (event) {
- console.log(event);
+ // console.log(event);
 })
